@@ -1,0 +1,5 @@
+---
+- name: installing/uninstalling s/w's
+  hosts: all
+  tasks:
+   - name:
