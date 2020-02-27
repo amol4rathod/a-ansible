@@ -1,0 +1,17 @@
+---
+- name: installing s/w application
+  hosts: all
+  tasks:
+  - name: install s/w
+    apt:
+     name: "{{item}}"
+     state: present
+     update_cache: no
+    with_items:
+     - tree
+     - apache2
+     - tomcat8
+     - git
+...
+
+

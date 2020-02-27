@@ -2,10 +2,10 @@
 - name: create file
   hosts: 172.31.85.27
   tasks:
-   - name: create file
-     file:
-      name: "{{a}}"
-      state: "{{b}}"
-      owner: "{{c}}"
-      group: "{{d}}"
+  - name: create file
+    file:
+     name: "{{a}}"
+     state: "{{b}}"
+     owner: "{{c}}"
+     group: "{{d}}"
 ...

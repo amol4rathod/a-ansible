@@ -1,0 +1,15 @@
+---
+- name: installing,uninstalling,s/w applcation
+  hosts: all
+  tasks:
+   - name: install/uninstall/upgrade s/w
+     apt:
+      name: "{{item.a}}"
+      state: "{{item.b}}"
+      update_cache: "{{item.c}}"
+     with_items:
+      - {a: tree, b: present, c: no}
+      - {a: apache2, b: absent, c: no}
+      - {a: tomcat8, b: latest, c: yes}
+...
+
