@@ -1,0 +1,13 @@
+---
+- name: configuring tomcat using child playbook
+  hosts: all
+  tasks:
+   - name: call multiple child playbook
+     include: "{{item}}"
+     with_items:
+      - install.yml
+      - copy_tomcat_users.yml
+      - change_port.yml
+      - restart.yml
+      - check_url_response.yml
+...
