@@ -1,0 +1,36 @@
+---
+- name: setup the jenkins server
+  hosts: jenkinsserver
+  tasks:
+   - name: install java, git, maven
+     apt:
+      name: "{{item}}"
+      state: present
+     with_items:
+      - openjdk-8-jdk
+      - git
+      - maven
+   - name: download jenkins.war
+     get_url:
+      url: http://mirrors.jenkins.io/war-stable/latest/jenkins.war
+      dest: /tmp
+- name: setup tomcat on QAserver and Prodserver
+  hosts: servers
+  tasks:
+   - name: install tomcat8 and tomcat8-admin
+     apt:
+      name: "{{item}}"
+      state: present
+     with_items:
+      - tomcat8
+      - tomcat8-admin
+   - name: copy tomcat_users.xml file
+     copy:
+      src: /home/ubuntu/tomcat_users.xml
+      dest: /etc/tomcat8
+   - name: restart tomcat8
+     service:
+      name: tomcat8
+      state: restarted
+...
+

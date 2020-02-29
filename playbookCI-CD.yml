@@ -1,0 +1,15 @@
+---
+- name: install required s/w on the server
+  hosts: all
+  tasks:
+   - name: install s/w's
+     apt:
+      name: "{{item}}"
+      state: present
+     with_items:
+      - openjdk-8-jdk
+      - git
+      - maven
+      - tomcat8
+      - tomcat8-admin
+...
